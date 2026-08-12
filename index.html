@@ -3,187 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>MyShop - Online Shopping</title>
-
+    <title>Aesthetic Vibes | Fashion</title>
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
-
 <body>
+    <header class="navbar">
+        <div class="logo">Aesthetic Vibes</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header class="header">
+    <main class="container">
+        <h2>Latest Collection</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="image-placeholder">Red Knitted Polo Sweater</div>
+                <h3>Fuzzy Red Polo Sweater</h3>
+                <p class="price">$45.00</p>
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
 
-    <div class="logo">
-        🛍️ MyShop
-    </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="image-placeholder">Dark Formal Shirt</div>
+                <h3>Dark Black Formal Shirt</h3>
+                <p class="price">$35.00</p>
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
 
-    <div class="search-box">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search products..."
-            oninput="searchProducts()"
-        >
-        🔍
-    </div>
-
-    <button class="cart-btn" onclick="openCart()">
-        🛒 Cart
-        <span id="cartCount">0</span>
-    </button>
-
-</header>
-
-
-<section class="hero">
-
-    <div>
-        <p class="small-title">WELCOME TO MYSHOP</p>
-
-        <h1>
-            Shop Everything<br>
-            You Love ❤️
-        </h1>
-
-        <p>
-            Quality products at affordable prices.
-        </p>
-
-        <button onclick="scrollToProducts()" class="shop-btn">
-            Shop Now →
-        </button>
-    </div>
-
-</section>
-
-
-<section class="categories">
-
-    <button onclick="filterCategory('all')">
-        All
-    </button>
-
-    <button onclick="filterCategory('electronics')">
-        📱 Electronics
-    </button>
-
-    <button onclick="filterCategory('fashion')">
-        👕 Fashion
-    </button>
-
-    <button onclick="filterCategory('home')">
-        🏠 Home
-    </button>
-
-</section>
-
-
-<main id="productsSection">
-
-    <div class="section-title">
-        <h2>Popular Products</h2>
-        <span id="productTotal"></span>
-    </div>
-
-    <div id="productGrid" class="product-grid"></div>
-
-</main>
-
-
-<!-- CART -->
-
-<div id="cartModal" class="modal">
-
-    <div class="cart-container">
-
-        <button class="close-btn" onclick="closeCart()">
-            ✕
-        </button>
-
-        <h2>🛒 Your Cart</h2>
-
-        <div id="cartItems"></div>
-
-        <div class="cart-bottom">
-
-            <h3>
-                Total:
-                ₹<span id="cartTotal">0</span>
-            </h3>
-
-            <button
-                class="checkout-btn"
-                onclick="checkout()"
-            >
-                💳 Checkout
-            </button>
-
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="image-placeholder">Loose White Pants</div>
+                <h3>Loose White Trousers</h3>
+                <p class="price">$40.00</p>
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
         </div>
+    </main>
 
-    </div>
-
-</div>
-
-
-<!-- CHECKOUT -->
-
-<div id="checkoutModal" class="modal">
-
-    <div class="checkout-container">
-
-        <button class="close-btn" onclick="closeCheckout()">
-            ✕
-        </button>
-
-        <h2>📦 Delivery Details</h2>
-
-        <input
-            id="customerName"
-            type="text"
-            placeholder="Full Name"
-        >
-
-        <input
-            id="customerPhone"
-            type="tel"
-            placeholder="Phone Number"
-        >
-
-        <textarea
-            id="customerAddress"
-            placeholder="Full Delivery Address"
-        ></textarea>
-
-        <button
-            class="checkout-btn"
-            onclick="startPayment()"
-        >
-            Pay with Razorpay
-        </button>
-
-    </div>
-
-</div>
-
-
-<footer>
-
-    <h3>🛍️ MyShop</h3>
-
-    <p>
-        Your simple online shopping destination.
-    </p>
-
-    <p>
-        © 2026 MyShop. All Rights Reserved.
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
