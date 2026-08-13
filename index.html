@@ -1,102 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Shirts | My Store</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UrbanWear — Fashion Store</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <!-- Header Section -->
-    <header class="navbar">
-        <div class="logo">BRANDLOGO</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#" class="active">Shirts</a></li>
-            </ul>
-        </nav>
-        <div class="cart">
-            🛒 Cart (<span id="cart-count">0</span>)
-        </div>
-    </header>
+<!-- ================= HEADER ================= -->
 
-    <!-- Main Content -->
-    <main class="collection-page">
-        <h1 class="collection-title">Premium Shirts Collection</h1>
-        <p class="collection-desc">Upgrade your wardrobe with our premium quality shirts.</p>
+<header class="header">
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            
-            <!-- Product Card 1 -->
-            <div class="product-card">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?w=500&q=80" alt="Black Shirt">
-                </div>
-                <div class="product-info">
-                    <p class="vendor">MYBRAND</p>
-                    <h3 class="product-title">Classic Black Casual Shirt</h3>
-                    <div class="price-box">
-                        <span class="sale-price">₹899</span>
-                        <span class="regular-price">₹1,499</span>
-                    </div>
-                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
-                </div>
-            </div>
+  <div class="header-top">
 
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&q=80" alt="White Shirt">
-                </div>
-                <div class="product-info">
-                    <p class="vendor">MYBRAND</p>
-                    <h3 class="product-title">Formal White Linen Shirt</h3>
-                    <div class="price-box">
-                        <span class="sale-price">₹999</span>
-                        <span class="regular-price">₹1,699</span>
-                    </div>
-                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
-                </div>
-            </div>
+    <button class="menu-btn" id="menuBtn">
+      ☰
+    </button>
 
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80" alt="Printed Shirt">
-                </div>
-                <div class="product-info">
-                    <p class="vendor">MYBRAND</p>
-                    <h3 class="product-title">Summer Floral Printed Shirt</h3>
-                    <div class="price-box">
-                        <span class="sale-price">₹799</span>
-                        <span class="regular-price">₹1,299</span>
-                    </div>
-                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
-                </div>
-            </div>
+    <a href="#" class="logo">
+      URBAN<span>WEAR</span>
+    </a>
 
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1626497764746-6dc36546b388?w=500&q=80" alt="Denim Shirt">
-                </div>
-                <div class="product-info">
-                    <p class="vendor">MYBRAND</p>
-                    <h3 class="product-title">Rugged Blue Denim Shirt</h3>
-                    <div class="price-box">
-                        <span class="sale-price">₹1,199</span>
-                        <span class="regular-price">₹1,999</span>
-                    </div>
-                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
-                </div>
-            </div>
+    <div class="header-actions">
 
-        </div>
-    </main>
+      <button id="searchBtn" title="Search">
+        🔍
+      </button>
 
-    <script src="script.js"></script>
+      <button id="wishlistBtn" title="Wishlist">
+        ♡
+      </button>
+
+      <button id="cartBtn" class="cart-btn" title="Cart">
+        🛒
+        <span id="cartCount">0</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Desktop navigation -->
+
+  <nav class="desktop-nav">
+
+    <a href="#" data-category="All">Home</a>
+    <a href="#products" data-category="Shirts">Shirts</a>
+    <a href="#products" data-category="T-Shirts">T-Shirts</a>
+    <a href="#products" data-category="Hoodies">Hoodies</a>
+    <a href="#products" data-category="Jeans">Jeans</a>
+    <a href="#products" data-category="Sale">Sale</a>
+
+  </nav>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <button class="close-menu" id="closeMenu">×</button>
+
+  <a href="#" data-category="All">Home</a>
+  <a href="#products" data-category="Shirts">Shirts</a>
+  <a href="#products" data-category="T-Shirts">T-Shirts</a>
+  <a href="#products" data-category="Hoodies">Hoodies</a>
+  <a href="#products" data-category="Jeans">Jeans</a>
+  <a href="#products" data-category="Sale">Sale</a>
+
+</div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-box" id="searchBox">
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search products..."
+  >
+
+  <button id="closeSearch">×</button>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <p class="hero-small">
+      NEW SEASON COLLECTION
+    </p>
+
+    <h1>
+      STYLE THAT<br>
+      SPEAKS.
+    </h1>
+
+    <p>
+      Premium fashion designed for your everyday style.
+    </p>
+
+    <button class="hero-btn" id="shopNow">
+      SHOP NOW →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CATEGORY ================= -->
+
+<section class="categories">
+
+  <button class="category active" data-category="All">
+    All
+  </button>
+
+  <button class="category" data-category="Shirts">
+    Shirts
+  </button>
+
+  <button class="category" data-category="T-Shirts">
+    T-Shirts
+  </button>
+
+  <button class="category" data-category="Hoodies">
+    Hoodies
+  </button>
+
+  <button class="category" data-category="Jeans">
+    Jeans
+  </button>
+
+</section>
+
+
+<!-- ================= PRODUCTS HEADER ================= -->
+
+<section class="products-section" id="products">
+
+  <div class="products-header">
+
+    <div>
+
+      <h2>
+        All Products
+      </h2>
+
+      <p id="productCount">
+        0 products
+      </p>
+
+    </div>
+
+
+    <div class="sort-box">
+
+      <label for="sortSelect">
+        Sort:
+      </label>
+
+      <select id="sortSelect">
+
+        <option value="featured">
+          Featured
+        </option>
+
+        <option value="newest">
+          Newest
+        </option>
+
+        <option value="low">
+          Price: Low to High
+        </option>
+
+        <option value="high">
+          Price: High to Low
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <!-- FILTER -->
+
+  <div class="filter-row">
+
+    <button id="filterBtn">
+      ⚙ Filters
+    </button>
+
+    <span id="activeFilter">
+      All Products
+    </span>
+
+  </div>
+
+
+  <!-- PRODUCT GRID -->
+
+  <div class="product-grid" id="productGrid"></div>
+
+</section>
+
+
+<!-- ================= FILTER PANEL ================= -->
+
+<div class="filter-overlay" id="filterOverlay">
+
+  <div class="filter-panel">
+
+    <button class="filter-close" id="filterClose">
+      ×
+    </button>
+
+    <h2>
+      Filters
+    </h2>
+
+    <div class="filter-group">
+
+      <h3>
+        Category
+      </h3>
+
+      <label>
+        <input type="radio" name="filterCategory" value="All" checked>
+        All
+      </label>
+
+      <label>
+        <input type="radio" name="filterCategory" value="Shirts">
+        Shirts
+      </label>
+
+      <label>
+        <input type="radio" name="filterCategory" value="T-Shirts">
+        T-Shirts
+      </label>
+
+      <label>
+        <input type="radio" name="filterCategory" value="Hoodies">
+        Hoodies
+      </label>
+
+      <label>
+        <input type="radio" name="filterCategory" value="Jeans">
+        Jeans
+      </label>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <h3>
+        Maximum Price
+      </h3>
+
+      <input
+        type="range"
+        id="priceRange"
+        min="299"
+        max="2999"
+        value="2999"
+      >
+
+      <p>
+        Up to ₹<span id="priceValue">2999</span>
+      </p>
+
+    </div>
+
+
+    <button class="apply-filter" id="applyFilter">
+      APPLY FILTER
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= QUICK VIEW ================= -->
+
+<div class="modal-overlay" id="quickView">
+
+  <div class="quick-modal">
+
+    <button class="modal-close" id="quickClose">
+      ×
+    </button>
+
+    <div id="quickContent"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-overlay" id="cartOverlay">
+
+  <div class="cart-drawer">
+
+    <div class="cart-header">
+
+      <h2>
+        Your Cart
+      </h2>
+
+      <button id="closeCart">
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="cartItems" class="cart-items">
+
+      <p class="empty-cart">
+        Your cart is empty.
+      </p>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          ₹0
+        </strong>
+
+      </div>
+
+      <button class="checkout-btn" id="checkoutBtn">
+        CHECKOUT
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+  Added to cart!
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-logo">
+    URBAN<span>WEAR</span>
+  </div>
+
+  <p>
+    Premium fashion for the modern generation.
+  </p>
+
+  <div class="footer-links">
+
+    <a href="#">
+      About
+    </a>
+
+    <a href="#">
+      Contact
+    </a>
+
+    <a href="#">
+      Privacy
+    </a>
+
+    <a href="#">
+      Terms
+    </a>
+
+  </div>
+
+  <p class="copyright">
+    © 2026 UrbanWear. All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
 </body>
-</html>
+    </html>
