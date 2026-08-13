@@ -9,11 +9,11 @@
 ===================================================== */
 
 const SUPABASE_URL =
-    "YOUR_SUPABASE_PROJECT_URL";
+    "https://txxdhjhmquzqztjtrxxu.supabase.co";
 
 
 const SUPABASE_KEY =
-    "YOUR_SUPABASE_PUBLISHABLE_KEY";
+    "sb_publishable_Or16AUkorA8OkpvNQXsj_w_3-9uXSi_";
 
 
 const {
