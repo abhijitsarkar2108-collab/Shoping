@@ -1079,4 +1079,608 @@ productForm.addEventListener(
 
         const image_url =
             document.getElementById(
-                "produ
+                "productImage"
+            ).value.trim();
+
+
+        const price =
+            Number(
+                document.getElementById(
+                    "productPrice"
+                ).value
+            );
+
+
+        const oldPriceValue =
+            document.getElementById(
+                "productOldPrice"
+            ).value;
+
+
+        const old_price =
+            oldPriceValue
+            ? Number(oldPriceValue)
+            : null;
+
+
+        const stock =
+            Number(
+                document.getElementById(
+                    "productStock"
+                ).value
+            );
+
+
+        const rating =
+            Number(
+                document.getElementById(
+                    "productRating"
+                ).value
+            );
+
+
+        const reviews =
+            Number(
+                document.getElementById(
+                    "productReviews"
+                ).value
+            );
+
+
+        const featured =
+            document.getElementById(
+                "productFeatured"
+            ).checked;
+
+
+        const active =
+            document.getElementById(
+                "productActive"
+            ).checked;
+
+
+        const slug =
+            createSlug(
+                name
+            );
+
+
+        const productData = {
+
+            name,
+
+            slug,
+
+            category,
+
+            description,
+
+            image_url,
+
+            price,
+
+            old_price,
+
+            stock,
+
+            rating,
+
+            reviews,
+
+            featured,
+
+            active
+
+        };
+
+
+        const saveButton =
+            document.getElementById(
+                "saveButtonText"
+            );
+
+
+        saveButton.textContent =
+            "SAVING...";
+
+
+        let result;
+
+
+        if (
+            editingProductId
+        ) {
+
+            result =
+                await supabaseClient
+                    .from("products")
+                    .update(
+                        productData
+                    )
+                    .eq(
+                        "id",
+                        editingProductId
+                    );
+
+        } else {
+
+            result =
+                await supabaseClient
+                    .from("products")
+                    .insert(
+                        productData
+                    );
+
+        }
+
+
+        saveButton.textContent =
+            editingProductId
+            ? "UPDATE PRODUCT"
+            : "ADD PRODUCT";
+
+
+        if (result.error) {
+
+            console.error(
+                result.error
+            );
+
+            showToast(
+                result.error.message
+            );
+
+            return;
+
+        }
+
+
+        showToast(
+            editingProductId
+            ? "Product updated ✓"
+            : "Product added ✓"
+        );
+
+
+        resetProductForm();
+
+        await loadProducts();
+
+        showSection(
+            "products"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   EDIT PRODUCT
+===================================================== */
+
+window.editProduct =
+async function(id) {
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+
+    if (!product) {
+
+        showToast(
+            "Product not found"
+        );
+
+        return;
+
+    }
+
+
+    editingProductId =
+        id;
+
+
+    document.getElementById(
+        "productId"
+    ).value =
+        id;
+
+
+    document.getElementById(
+        "productName"
+    ).value =
+        product.name || "";
+
+
+    document.getElementById(
+        "productCategory"
+    ).value =
+        product.category || "";
+
+
+    document.getElementById(
+        "productDescription"
+    ).value =
+        product.description || "";
+
+
+    document.getElementById(
+        "productImage"
+    ).value =
+        product.image_url || "";
+
+
+    document.getElementById(
+        "productPrice"
+    ).value =
+        product.price ?? "";
+
+
+    document.getElementById(
+        "productOldPrice"
+    ).value =
+        product.old_price ?? "";
+
+
+    document.getElementById(
+        "productStock"
+    ).value =
+        product.stock ?? 0;
+
+
+    document.getElementById(
+        "productRating"
+    ).value =
+        product.rating ?? 0;
+
+
+    document.getElementById(
+        "productReviews"
+    ).value =
+        product.reviews ?? 0;
+
+
+    document.getElementById(
+        "productFeatured"
+    ).checked =
+        !!product.featured;
+
+
+    document.getElementById(
+        "productActive"
+    ).checked =
+        !!product.active;
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Edit Product";
+
+
+    document.getElementById(
+        "saveButtonText"
+    ).textContent =
+        "UPDATE PRODUCT";
+
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        "Edit Product";
+
+
+    updateImagePreview(
+        product.image_url
+    );
+
+
+    showSection(
+        "addProduct"
+    );
+
+};
+
+
+/* =====================================================
+   RESET FORM
+===================================================== */
+
+function resetProductForm() {
+
+    editingProductId =
+        null;
+
+
+    productForm.reset();
+
+
+    document.getElementById(
+        "productId"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "productActive"
+    ).checked =
+        true;
+
+
+    document.getElementById(
+        "productFeatured"
+    ).checked =
+        false;
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Add Product";
+
+
+    document.getElementById(
+        "saveButtonText"
+    ).textContent =
+        "ADD PRODUCT";
+
+
+    document.getElementById(
+        "imagePreview"
+    ).innerHTML =
+        "<span>Image preview</span>";
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+window.openDeleteModal =
+function(id) {
+
+    deletingProductId =
+        id;
+
+
+    document
+        .getElementById(
+            "deleteModal"
+        )
+        .classList.remove(
+            "hidden"
+        );
+
+};
+
+
+document
+    .getElementById(
+        "cancelDelete"
+    )
+    .addEventListener(
+        "click",
+        closeDeleteModal
+    );
+
+
+function closeDeleteModal() {
+
+    deletingProductId =
+        null;
+
+
+    document
+        .getElementById(
+            "deleteModal"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+}
+
+
+document
+    .getElementById(
+        "confirmDelete"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            if (
+                !deletingProductId
+            ) {
+
+                return;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("products")
+                    .delete()
+                    .eq(
+                        "id",
+                        deletingProductId
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                showToast(
+                    error.message
+                );
+
+                return;
+
+            }
+
+
+            closeDeleteModal();
+
+
+            showToast(
+                "Product deleted ✓"
+            );
+
+
+            await loadProducts();
+
+        }
+    );
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function createSlug(text) {
+
+    return text
+
+        .toLowerCase()
+
+        .trim()
+
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+
+        .replace(
+            /^-+|-+$/g,
+            ""
+        );
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function escapeAttribute(value) {
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+function setLoginMessage(
+    message,
+    error = false
+) {
+
+    loginMessage.textContent =
+        message;
+
+    loginMessage.style.color =
+        error
+        ? "#d93025"
+        : "#666";
+
+}
+
+
+function showToast(
+    message
+) {
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        async (
+            event,
+            session
+        ) => {
+
+            if (
+                event ===
+                    "SIGNED_OUT"
+            ) {
+
+                loginScreen
+                    .classList
+                    .remove(
+                        "hidden"
+                    );
+
+                adminApp
+                    .classList
+                    .add(
+                        "hidden"
+                    );
+
+            }
+
+        }
+    );
