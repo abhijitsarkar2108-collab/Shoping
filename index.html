@@ -3,50 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Vibes | Fashion</title>
+    <title>Premium Shirts | My Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Header Section -->
     <header class="navbar">
-        <div class="logo">Aesthetic Vibes</div>
+        <div class="logo">BRANDLOGO</div>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#" class="active">Shirts</a></li>
             </ul>
         </nav>
+        <div class="cart">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </div>
     </header>
 
-    <main class="container">
-        <h2>Latest Collection</h2>
+    <!-- Main Content -->
+    <main class="collection-page">
+        <h1 class="collection-title">Premium Shirts Collection</h1>
+        <p class="collection-desc">Upgrade your wardrobe with our premium quality shirts.</p>
+
+        <!-- Product Grid -->
         <div class="product-grid">
-            <!-- Product 1 -->
+            
+            <!-- Product Card 1 -->
             <div class="product-card">
-                <div class="image-placeholder">Red Knitted Polo Sweater</div>
-                <h3>Fuzzy Red Polo Sweater</h3>
-                <p class="price">$45.00</p>
-                <button onclick="addToCart()">Add to Cart</button>
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?w=500&q=80" alt="Black Shirt">
+                </div>
+                <div class="product-info">
+                    <p class="vendor">MYBRAND</p>
+                    <h3 class="product-title">Classic Black Casual Shirt</h3>
+                    <div class="price-box">
+                        <span class="sale-price">₹899</span>
+                        <span class="regular-price">₹1,499</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
             </div>
 
-            <!-- Product 2 -->
+            <!-- Product Card 2 -->
             <div class="product-card">
-                <div class="image-placeholder">Dark Formal Shirt</div>
-                <h3>Dark Black Formal Shirt</h3>
-                <p class="price">$35.00</p>
-                <button onclick="addToCart()">Add to Cart</button>
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&q=80" alt="White Shirt">
+                </div>
+                <div class="product-info">
+                    <p class="vendor">MYBRAND</p>
+                    <h3 class="product-title">Formal White Linen Shirt</h3>
+                    <div class="price-box">
+                        <span class="sale-price">₹999</span>
+                        <span class="regular-price">₹1,699</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
             </div>
 
-            <!-- Product 3 -->
+            <!-- Product Card 3 -->
             <div class="product-card">
-                <div class="image-placeholder">Loose White Pants</div>
-                <h3>Loose White Trousers</h3>
-                <p class="price">$40.00</p>
-                <button onclick="addToCart()">Add to Cart</button>
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80" alt="Printed Shirt">
+                </div>
+                <div class="product-info">
+                    <p class="vendor">MYBRAND</p>
+                    <h3 class="product-title">Summer Floral Printed Shirt</h3>
+                    <div class="price-box">
+                        <span class="sale-price">₹799</span>
+                        <span class="regular-price">₹1,299</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
             </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1626497764746-6dc36546b388?w=500&q=80" alt="Denim Shirt">
+                </div>
+                <div class="product-info">
+                    <p class="vendor">MYBRAND</p>
+                    <h3 class="product-title">Rugged Blue Denim Shirt</h3>
+                    <div class="price-box">
+                        <span class="sale-price">₹1,199</span>
+                        <span class="regular-price">₹1,999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
         </div>
     </main>
 
     <script src="script.js"></script>
 </body>
-                                           </html>
+</html>
